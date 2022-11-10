@@ -14,14 +14,12 @@ export default function SignIn() {
     const [PasswordInputValue, setPasswordInputValue] = useState("");
 
     const login = ()=>{
-       axios.post('http://localhost:5000/login',{
+       axios.post('http://localhost:3001/login',{
         email: EmailInputValue,
         password:PasswordInputValue ,}).then((res)=>{
-          console.log(res);
+          console.log(res.data);
         })
       } 
- 
-
     
   return (
     <MDBContainer className="p-3 my-5 d-flex flex-column w-50">

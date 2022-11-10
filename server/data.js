@@ -17,13 +17,12 @@ app.get("/", async (req, res) => {
 app.post('/login', async (req, res) => {
 const Email = req.body.email
 const Password = req.body.password
-let hasdpassword = await bcrypt.hash(Password, 10);
-let user = await findByEmail(Email)
+const user = await findByEmail(Email)
   if (user == null) {
     return res.status(400).send('Cannot find user')
   }
   try {
-    if(await bcrypt.compare(hasdpassword, user.UserPassword)) {
+    if(await bcrypt.compare(Password, user[0].UserPassword)) {
       res.send('Success')
     } else {
       res.send('Not Allowed')
@@ -71,6 +70,5 @@ export async function createUser(Name, Email, Password) {
   const id = result.insertId;
   return getUser(id);
 }
-
 
 
