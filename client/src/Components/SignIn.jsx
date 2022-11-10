@@ -1,4 +1,4 @@
-import React, {useState}  from 'react'
+import React, {useState, useNavigate }  from 'react'
 import axios from 'axios'
 import {
     MDBContainer,
@@ -10,6 +10,7 @@ import {
   from 'mdb-react-ui-kit';
 
 export default function SignIn() {
+  let navigate = useNavigate();
     const [EmailInputValue, setEmailInputValue] = useState("");
     const [PasswordInputValue, setPasswordInputValue] = useState("");
 
@@ -17,7 +18,14 @@ export default function SignIn() {
        axios.post('http://localhost:3001/login',{
         email: EmailInputValue,
         password:PasswordInputValue ,}).then((res)=>{
-          console.log(res.data);
+          if(res.data === 'success'){
+            navigate("/Home", { replace: true })
+          }else if(res.data === 'Not Allowed'){
+            alert('password wrong')
+          }else{
+            alert('something went wrong :(')
+          }
+          ;
         })
       } 
     

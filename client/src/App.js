@@ -1,10 +1,24 @@
-import React from 'react'
-import Signin from './Components/SignIn'
+import React, { BrowserRouter, Route, Switch ,Link,Routes } from "react-router-dom";
+import Signin from "./Components/SignIn";
+import Home from "./Components/home";
 
 export default function App() {
   return (
     <div>
-<Signin/>
-      </div>
-  )
+      <BrowserRouter>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/Signin">Signin</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+        <Route path="/Signin">
+          <Signin />
+        </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
