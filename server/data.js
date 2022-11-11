@@ -27,7 +27,7 @@ const user = await findByEmail(Email)
     } else {
       res.send('Not Allowed')
     }
-  } catch {
+  }catch {
     res.status(500).send()
   }
 })
