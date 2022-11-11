@@ -9,6 +9,7 @@ import Register from "./Components/Register";
 export default function App() {
   return (
     <div> 
+      <NavBar/>
       <Link to={'/Home'}>home </Link><br/>
       <Link to={'/login'}> log-in </Link><br/>
       <Link to={'/register'}> register </Link><br/>
