@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import cors from "cors";
 import express from "express";
 import bodyparser from "body-parser";
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express();
 const port = 3001;
 app.use(cors());
@@ -36,10 +38,10 @@ app.listen(port, () => console.log(`app listening on port ${port}!`));
 
 const pool = mysql
   .createPool({
-    host: "127.0.0.1",
-    user: "root",
-    password: "password",
-    database: "mydb",
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
   })
   .promise();
 
