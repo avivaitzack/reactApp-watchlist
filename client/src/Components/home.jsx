@@ -1,7 +1,8 @@
 import React from 'react'
+import Gallery from "./Gallery";
 
-export default function home() {
+export default function Home() {
   return (
-    <div>home</div>
+    <div><Gallery/></div>
   )
 }
