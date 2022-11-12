@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,Link } from 'react';
 import {
   MDBContainer,
   MDBNavbar,
@@ -20,7 +20,7 @@ export default function Nav() {
   const [showBasic, setShowBasic] = useState(false);
 
   return (
-    <MDBNavbar expand='lg' light bgColor='dark'>
+    <MDBNavbar expand='lg' dark bgColor='dark'>
       <MDBContainer fluid>
         <MDBNavbarBrand href='#'>Brand</MDBNavbarBrand>
 
