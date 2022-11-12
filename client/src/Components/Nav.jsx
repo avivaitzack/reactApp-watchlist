@@ -18,8 +18,9 @@ import {
 
 export default function Nav() {
   const [showBasic, setShowBasic] = useState(false);
+
   return (
-    <MDBNavbar  expand='lg' light dark bgColor='dark'>
+    <MDBNavbar expand='lg' light bgColor='dark'>
       <MDBContainer fluid>
         <MDBNavbarBrand href='#'>Brand</MDBNavbarBrand>
 
@@ -35,12 +36,12 @@ export default function Nav() {
         <MDBCollapse navbar show={showBasic}>
           <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
             <MDBNavbarItem>
-              <MDBNavbarLink active aria-current='page' href='/Home'>
+              <MDBNavbarLink active aria-current='page' href='#'>
                 Home
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink href='/login'>Log In</MDBNavbarLink>
+              <MDBNavbarLink href='#'>Link</MDBNavbarLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
@@ -57,8 +58,8 @@ export default function Nav() {
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink disabled href='#' tabIndex={-1} aria-disabled='true'><i class="fa-solid fa-heart"></i>
-              {/* {aria-disabled =='true'? <i class="fa-regular fa-heart"></i>:<i class="fa-solid fa-heart"></i>} */}
+              <MDBNavbarLink disabled href='#' tabIndex={-1} aria-disabled='true'>
+                Disabled
               </MDBNavbarLink>
             </MDBNavbarItem>
           </MDBNavbarNav>
@@ -70,5 +71,4 @@ export default function Nav() {
         </MDBCollapse>
       </MDBContainer>
     </MDBNavbar>
-  )
-}
+  )}

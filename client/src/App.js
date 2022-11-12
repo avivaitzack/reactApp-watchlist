@@ -12,6 +12,7 @@ export default function App() {
   return (
     <div> 
       <NavBar/>
+      <Footer/>
       <Link to={'/Home'}> </Link>
       <Link to={'/login'}>  </Link>
       <Link to={'/register'}>  </Link>
@@ -25,7 +26,7 @@ export default function App() {
         <Route path="/footer" element={<Footer />} />
         <Route path="/navbar" element={<NavBar />} />
       </Routes>
-      <Footer/>
+      
     </div>
   );
 }
