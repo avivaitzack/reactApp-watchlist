@@ -8,6 +8,7 @@ import Register from "./Components/Register";
 import Gallery from "./Components/Gallery";
 import Genre from './Components/GenreGallery';
 import ViewMore from "./Components/ViewMore";
+import AboutUs from "./Components/AboutUs";
 
 
 export default function App() {
@@ -15,7 +16,7 @@ export default function App() {
   return (  
   <>
     <NavBar/>
-  <div style={{marginTop:'80px'}}> 
+  <div style={{marginTop:'80px', marginBottom:'80px'}}> 
       <Link to={'/'}> </Link>
       <Link to={'/login'}>  </Link>
       <Link to={'/register'}>  </Link>
@@ -24,6 +25,7 @@ export default function App() {
       <Link to={'/gallery'}>  </Link>
       <Link to={'/genre'}>  </Link>
       <Link to={'/viewmore'}>  </Link>
+      <Link to={'/aboutUs'}>  </Link>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LogIn />} />
@@ -34,6 +36,7 @@ export default function App() {
         <Route path="/footer" element={<Footer />} />
         <Route path="/navbar" element={<NavBar />} />
         <Route path="/viewmore/:showname" element={<ViewMore />} />
+        <Route path='/aboutUs' element={<AboutUs />} />
       </Routes>
       </div>
       <Footer/>

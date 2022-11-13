@@ -25,7 +25,7 @@ export default function GenreGallery(prpos) {
   }
 
   return (
-    <div className="container">
+    <div className="gallerycontainer">
       {shows.map((show) => (
          <Card key={show.id} style={{ width: '14rem', backgroundColor:'#0C090A', margin:'10px'}}>
          <Card.Img variant="top" src={show.image.medium}/>
