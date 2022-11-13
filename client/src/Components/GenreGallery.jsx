@@ -13,16 +13,16 @@ export default function GenreGallery(prpos) {
   useEffect(() => {
     axios.get(`https://api.tvmaze.com/shows`).then((res) => {
       const data = res.data.filter((show) =>
-        show.genres.includes(`${ genre }`)
+        show.genres.includes(`${genre}`)
       );
       setShows(data);
-      console.log(data);
 
     });
-    console.log(shows);
   }, [genre]);
  
-
+  function handleClick(showname) {
+    navigate(`/viewmore/${showname}`)
+  }
 
   return (
     <div className="container">
@@ -31,7 +31,7 @@ export default function GenreGallery(prpos) {
          <Card.Img variant="top" src={show.image.medium}/>
          <Card.Body>
            <Card.Title style={{display:'flex', justifyContent:'center'}}>{show.name}</Card.Title>
-           <Button  style={{display:'flex', justifyContent:'center'}} variant="primary">view more</Button>
+           <Button onClick={()=> handleClick(`${show.name}`)} style={{display:'flex', justifyContent:'center'}} variant="primary">view more</Button>
          </Card.Body>
        </Card>
    ))}
