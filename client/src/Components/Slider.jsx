@@ -20,7 +20,7 @@ export default function Slider(prpos) {
   }
 
   return (
-    <div style={{ height: "500px", width: "250px",}}>
+    <div style={{ height: "500px", width: "250px",margin:'25px'}}>
       <Carousel>
         {shows.map((show) => (
           <Carousel.Item  key={show.id}>

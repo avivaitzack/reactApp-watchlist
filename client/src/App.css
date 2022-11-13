@@ -1,15 +1,17 @@
-.gallerycontainer {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 80px;
-}
-.aboutusdiv {
+
+.textDiv {
   border: 2px solid #0275d8;
   padding: 20px;
   width: 650px;
   margin: 50px;
   border-radius: 15px;
 }
-.aboutusdiv:hover {
+.textDiv:hover {
   color: #0275d8;
+}
+
+.flexCenter{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

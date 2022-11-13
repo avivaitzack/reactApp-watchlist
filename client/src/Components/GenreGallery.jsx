@@ -25,14 +25,15 @@ export default function GenreGallery(prpos) {
   }
 
   return (
-    <div className="gallerycontainer">
+    <div className="flexCenter">
       {shows.map((show) => (
-         <Card key={show.id} style={{ width: '14rem', backgroundColor:'#0C090A', margin:'10px'}}>
+         <Card key={show.id} style={{ width: '14rem', backgroundColor:'#0C090A', margin:'15px'}}>
          <Card.Img variant="top" src={show.image.medium}/>
          <Card.Body>
-           <Card.Title style={{display:'flex', justifyContent:'center'}}>{show.name}</Card.Title>
-           <Button onClick={()=> handleClick(`${show.name}`)} style={{display:'flex', justifyContent:'center'}} variant="primary">view more</Button>
+           <Card.Title >{show.name}</Card.Title>
+           
          </Card.Body>
+         <Button onClick={()=> handleClick(`${show.name}`)}  variant="primary">view more</Button>
        </Card>
    ))}
     </div>

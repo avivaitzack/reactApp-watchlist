@@ -9,6 +9,7 @@ import Gallery from "./Components/Gallery";
 import Genre from './Components/GenreGallery';
 import ViewMore from "./Components/ViewMore";
 import AboutUs from "./Components/AboutUs";
+import './App.css'
 
 
 export default function App() {
@@ -16,7 +17,7 @@ export default function App() {
   return (  
   <>
     <NavBar/>
-  <div style={{marginTop:'80px', marginBottom:'80px'}}> 
+  <div className="flexCenter" > 
       <Link to={'/'}> </Link>
       <Link to={'/login'}>  </Link>
       <Link to={'/register'}>  </Link>

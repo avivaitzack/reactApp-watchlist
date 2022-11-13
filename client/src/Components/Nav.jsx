@@ -1,4 +1,4 @@
-import React, { useState,Link } from 'react';
+import React, { useState } from 'react';
 import {
   MDBContainer,
   MDBNavbar,
@@ -22,7 +22,7 @@ export default function Nav() {
   return (
     <MDBNavbar expand='lg' dark bgColor='dark'>
       <MDBContainer fluid>
-        <MDBNavbarBrand href='#'>Brand</MDBNavbarBrand>
+        <MDBNavbarBrand href='/aboutus'>Brand</MDBNavbarBrand>
 
         <MDBNavbarToggler
           aria-controls='navbarSupportedContent'
@@ -36,12 +36,12 @@ export default function Nav() {
         <MDBCollapse navbar show={showBasic}>
           <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
             <MDBNavbarItem>
-              <MDBNavbarLink active aria-current='page' href='#'>
+              <MDBNavbarLink active aria-current='page' href='/'>
                 Home
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink href='#'>Link</MDBNavbarLink>
+              <MDBNavbarLink href='/login'>Log-in</MDBNavbarLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
@@ -58,8 +58,8 @@ export default function Nav() {
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink disabled href='#' tabIndex={-1} aria-disabled='true'>
-                Disabled
+              <MDBNavbarLink disabled href='/favorites' tabIndex={-1} aria-disabled='true'>
+                favoriets
               </MDBNavbarLink>
             </MDBNavbarItem>
           </MDBNavbarNav>

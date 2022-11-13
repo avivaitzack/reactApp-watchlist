@@ -43,7 +43,7 @@ const login = () => {
         id="form1"
         type="email"
       />
-      <MDBInput
+      <MDBInput 
         onChange={(e) => setPasswordInputValue(e.target.value)}
         wrapperClass="mb-4"
         label="Password"

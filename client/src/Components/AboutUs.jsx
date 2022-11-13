@@ -3,9 +3,9 @@ import '../App.css'
 export default function AboutUs() {
   return (
     <div>
-      <h1 style={{textAlign:'center'}}>About watchList</h1>
-      <div className="gallerycontainer">
-      <div className="aboutusdiv">
+      <h1 style={{textAlign:'center', margin:'30px'}}>About watchList</h1>
+      <div className="flexCenter">
+      <div className="textDiv">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus
         debitis voluptatibus aliquam tempora cumque pariatur, illum porro
         voluptatem voluptate blanditiis nesciunt quidem quasi magni culpa
@@ -15,7 +15,7 @@ export default function AboutUs() {
         voluptatem voluptate blanditiis nesciunt quidem quasi magni culpa
         dolores fugit sapiente veniam voluptas.
       </div>
-      <div className="aboutusdiv">
+      <div className="textDiv">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus
         debitis voluptatibus aliquam tempora cumque pariatur, illum porro
         voluptatem voluptate blanditiis nesciunt quidem quasi magni culpa
@@ -25,7 +25,7 @@ export default function AboutUs() {
         voluptatem voluptate blanditiis nesciunt quidem quasi magni culpa
         dolores fugit sapiente veniam voluptas.
       </div>
-      <div className="aboutusdiv">
+      <div className="textDiv">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus
         debitis voluptatibus aliquam tempora cumque pariatur, illum porro
         voluptatem voluptate blanditiis nesciunt quidem quasi magni culpa
@@ -35,7 +35,7 @@ export default function AboutUs() {
         voluptatem voluptate blanditiis nesciunt quidem quasi magni culpa
         dolores fugit sapiente veniam voluptas.
       </div>
-      <div className="aboutusdiv">
+      <div className="textDiv">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus
         debitis voluptatibus aliquam tempora cumque pariatur, illum porro
         voluptatem voluptate blanditiis nesciunt quidem quasi magni culpa
@@ -45,7 +45,7 @@ export default function AboutUs() {
         voluptatem voluptate blanditiis nesciunt quidem quasi magni culpa
         dolores fugit sapiente veniam voluptas.
       </div>
-      <div className="aboutusdiv">
+      <div className="textDiv">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus
         debitis voluptatibus aliquam tempora cumque pariatur, illum porro
         voluptatem voluptate blanditiis nesciunt quidem quasi magni culpa
@@ -55,7 +55,7 @@ export default function AboutUs() {
         voluptatem voluptate blanditiis nesciunt quidem quasi magni culpa
         dolores fugit sapiente veniam voluptas.
       </div>
-      <div className="aboutusdiv">
+      <div className="textDiv">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus
         debitis voluptatibus aliquam tempora cumque pariatur, illum porro
         voluptatem voluptate blanditiis nesciunt quidem quasi magni culpa
