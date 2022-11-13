@@ -25,7 +25,7 @@ export default function GenreGallery(prpos) {
   }
 
   return (
-    <div className="flexCenter">
+    <div style={{margin:'35px'}} className="flexCenter">
       {shows.map((show) => (
          <Card key={show.id} style={{ width: '14rem', backgroundColor:'#0C090A', margin:'15px'}}>
          <Card.Img variant="top" src={show.image.medium}/>

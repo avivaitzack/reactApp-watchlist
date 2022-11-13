@@ -35,7 +35,8 @@ const login = () => {
 
 
   return (
-    <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
+    <div style={{margin:'20px', width:'100vh'}}>
+    <MDBContainer  className="p-3 my-5 d-flex flex-column w-50">
       <MDBInput
         onChange={(e) => setEmailInputValue(e.target.value)}
         wrapperClass="mb-4"
@@ -113,5 +114,6 @@ const login = () => {
         </div>
       </div>
     </MDBContainer>
+    </div>
   );
 }
