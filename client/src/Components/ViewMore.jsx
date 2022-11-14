@@ -1,43 +1,82 @@
-import React,{useEffect, useState} from 'react'
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import {
   MDBCard,
-  MDBCardBody,
   MDBCardTitle,
   MDBCardText,
+  MDBCardBody,
   MDBCardImage,
+  MDBRow,
+  MDBCol,
   MDBBtn
-} from 'mdb-react-ui-kit';
+} from "mdb-react-ui-kit";
 
 export default function ViewMore() {
-    let { showname } = useParams();
-    const [show , setshow] = useState();
+  let { showname } = useParams();
+  const [show, setshow] = useState([]);
+  const [showSum, setshowSum] = useState();
+  const [showId, setshowId] = useState();
+  const [showCast, setshowCast] = useState();
 
-    useEffect(() => {
-      axios.get(`https://api.tvmaze.com/singlesearch/shows?q=${showname}`).then((res) => {
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.tvmaze.com/singlesearch/shows?q=${showname}&embed=episodes`
+      )
+      .then((res) => {
         const data = res.data;
-        setshow(data);
+        setshow([data]);
+        setshowSum(data.summary);
+        setshowId(data.id);
       });
-    },[showname]);
-    const htmlString =`${show.summary}`;
-    console.log(show);
-  return (
-    <div style={{padding:'7px', margin:'2px'}}>
-<MDBCard style={{backgroundColor:'#0C090A', margin:'20px', width:"700px"}}>
-    <MDBCardImage style={{width:'700px', height:'400px'}} src={show.image.medium} position='top' alt='...' />
-    <MDBCardBody>
-      <MDBCardTitle>{show.name}</MDBCardTitle>
-      <MDBCardText>
-      {show.genres}
-      </MDBCardText>
-      <MDBCardText >
-      <div dangerouslySetInnerHTML={{__html: htmlString}} />
-      </MDBCardText >
-      <MDBBtn href='#'>Button</MDBBtn>
-    </MDBCardBody>
-  </MDBCard> 
+  }, [showname]);
 
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.tvmaze.com/shows/${showId}/cast`
+      )
+      .then((res) => {
+        const data = res.data;
+        setshowCast([data]);
+      });
+  }, [showname,show]);
+
+  console.log(show);
+  console.log(showCast);
+
+  return (
+    <div style={{ padding: "7px", margin: "2px" }}>
+      {show.map((show) => (
+        <MDBCard
+          key={show.id}
+          style={{ backgroundColor: "#0C090A" }}
+        >
+          <MDBRow className="g-0">
+            <MDBCol md="4">
+              <MDBCardImage src={show.image.medium} alt="..."  height={500} width={400}/>
+            </MDBCol>
+            <MDBCol md="8">
+              <MDBCardBody>
+                <MDBCardTitle>{show.name}</MDBCardTitle>
+                <MDBCardText>
+                  <small className="text-muted">{show.genres}</small>
+                </MDBCardText>
+                <MDBCardText
+                  dangerouslySetInnerHTML={{ __html: showSum }}
+                ></MDBCardText>
+                <MDBBtn></MDBBtn>
+              </MDBCardBody>
+            </MDBCol>
+            
+          </MDBRow>
+          
+        </MDBCard>
+        
+      ))}
     </div>
-  )
+  );
 }
