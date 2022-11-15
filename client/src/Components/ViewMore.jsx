@@ -18,11 +18,9 @@ export default function ViewMore() {
   const [showSum, setshowSum] = useState();
 
   useEffect(() => {
-    axios
-      .get(
+    axios.get(
         `https://api.tvmaze.com/singlesearch/shows?q=${showname}&embed=episodes`
-      )
-      .then((res) => {
+      ).then((res) => {
         const data = res.data;
         setshow([data]);
         setshowSum(data.summary);

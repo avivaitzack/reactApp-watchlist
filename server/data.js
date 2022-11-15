@@ -14,6 +14,14 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.get("/", async (req, res) => {
   res.send(getUser(8));
 });
+const pool = mysql
+  .createPool({
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+  })
+  .promise();
 
 
 app.post('/login', async (req, res) => {
@@ -24,8 +32,8 @@ const user = await findByEmail(Email)
     return res.status(400).send('Cannot find user')
   }
   try {
-    if(await bcrypt.compare(Password, user[0].UserPassword)) {
-      res.send('Success')
+    if(await bcrypt.compare(Password, user[0].userPassword)) {
+      res.send(['Success',[user[0].userId,user[0].userName,user[0].userEmail]])
     } else {
       res.send('Not Allowed')
     }
@@ -36,25 +44,18 @@ const user = await findByEmail(Email)
 
 app.listen(port, () => console.log(`app listening on port ${port}!`));
 
-const pool = mysql
-  .createPool({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
-  })
-  .promise();
+
 
 export async function findByEmail(Email) {
   const [user] = await pool.query(
-    `SELECT * FROM users WHERE UserEmail = ? `,
+    `SELECT * FROM users WHERE userEmail = ? `,
     [Email]
   );
 
   return user;
 }
 export async function getUser(id) {
-  const [users] = await pool.query(`SELECT * FROM users WHERE UserID = ?`, [
+  const [users] = await pool.query(`SELECT * FROM users WHERE userId = ?`, [
     id,
   ]);
   return users;
@@ -64,7 +65,7 @@ export async function createUser(Name, Email, Password) {
   let hasedPassword = await bcrypt.hash(Password, 10);
   const [result] = await pool.query(
     `
-      INSERT INTO users (UserFullName, UserEmail, UserPassword)
+      INSERT INTO users (userName, userEmail, userPassword)
       VALUES (?, ?, ?)
       `,
     [Name, Email, hasedPassword]
@@ -72,5 +73,3 @@ export async function createUser(Name, Email, Password) {
   const id = result.insertId;
   return getUser(id);
 }
-
-

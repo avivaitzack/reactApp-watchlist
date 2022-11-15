@@ -13,18 +13,15 @@ export default function LogIn() {
   const [PasswordInputValue, setPasswordInputValue] = useState("");
   const [Respones, setRespones] = useState([""]);
 
- 
-  
-
-const login = () => {
-    axios.post("http://localhost:3001/login", {
-      email: EmailInputValue,
-      password: PasswordInputValue,
-    })
-    .then((res) => {
-      setRespones(res.data);
-      console.log(res.data);
-    });
+  const login = () => {
+    axios.post("http://localhost:3001/login" , {
+        email: EmailInputValue,
+        password: PasswordInputValue,
+      })
+      .then((res) => {
+        setRespones(res.data[0]);
+        console.log(Respones);
+      });
     if (Respones === "Success") {
     } else if (Respones === "Not Allowed") {
       alert("password wrong");
@@ -33,87 +30,88 @@ const login = () => {
     }
   };
 
-
   return (
-    <div style={{margin:'20px', width:'100vh'}}>
-    <MDBContainer  className="p-3 my-5 d-flex flex-column w-50">
-      <MDBInput
-        onChange={(e) => setEmailInputValue(e.target.value)}
-        wrapperClass="mb-4"
-        label="Email address"
-        id="form1"
-        type="email"
-      />
-      <MDBInput 
-        onChange={(e) => setPasswordInputValue(e.target.value)}
-        wrapperClass="mb-4"
-        label="Password"
-        id="form2"
-        type="password"
-      />
-
-      <div className="d-flex justify-content-between mx-3 mb-4">
-        <MDBCheckbox
-          name="flexCheck"
-          value=""
-          id="flexCheckDefault"
-          label="Remember me"
+    <div style={{ margin: "130px", width: "100vh" }}>
+      <MDBContainer className="p-3 my-5 d-flex flex-column w-100 ">
+        <MDBInput
+          style={{ backgroundColor: "black" }}
+          onChange={(e) => setEmailInputValue(e.target.value)}
+          wrapperClass="mb-4"
+          label="Email address"
+          id="form1"
+          type="email"
         />
-        <a href="!#">Forgot password?</a>
-      </div>
+        <MDBInput
+          style={{ backgroundColor: "black" }}
+          onChange={(e) => setPasswordInputValue(e.target.value)}
+          wrapperClass="mb-4"
+          label="Password"
+          id="form2"
+          type="password"
+        />
 
-      <MDBBtn onClick={login} className="mb-4">
-        Sign in
-      </MDBBtn>
-
-      <div className="text-center">
-        <p>
-          Not a member? <a href="/register">Register</a>
-        </p>
-        <p>or sign up with:</p>
-
-        <div
-          className="d-flex justify-content-between mx-auto"
-          style={{ width: "40%" }}
-        >
-          <MDBBtn
-            tag="a"
-            color="none"
-            className="m-1"
-            style={{ color: "#1266f1" }}
-          >
-            <MDBIcon fab icon="facebook-f" size="sm" />
-          </MDBBtn>
-
-          <MDBBtn
-            tag="a"
-            color="none"
-            className="m-1"
-            style={{ color: "#1266f1" }}
-          >
-            <MDBIcon fab icon="twitter" size="sm" />
-          </MDBBtn>
-
-          <MDBBtn
-            tag="a"
-            color="none"
-            className="m-1"
-            style={{ color: "#1266f1" }}
-          >
-            <MDBIcon fab icon="google" size="sm" />
-          </MDBBtn>
-
-          <MDBBtn
-            tag="a"
-            color="none"
-            className="m-1"
-            style={{ color: "#1266f1" }}
-          >
-            <MDBIcon fab icon="github" size="sm" />
-          </MDBBtn>
+        <div className="d-flex justify-content-between mx-3 mb-4">
+          <MDBCheckbox
+            name="flexCheck"
+            value=""
+            id="flexCheckDefault"
+            label="Remember me"
+          />
+          <a href="!#">Forgot password?</a>
         </div>
-      </div>
-    </MDBContainer>
+
+        <MDBBtn onClick={login} className="mb-4">
+          Sign in
+        </MDBBtn>
+
+        <div className="text-center">
+          <p>
+            Not a member? <a href="/register">Register</a>
+          </p>
+          <p>or sign up with:</p>
+
+          <div
+            className="d-flex justify-content-between mx-auto"
+            style={{ width: "40%" }}
+          >
+            <MDBBtn
+              tag="a"
+              color="none"
+              className="m-1"
+              style={{ color: "#1266f1" }}
+            >
+              <MDBIcon fab icon="facebook-f" size="sm" />
+            </MDBBtn>
+
+            <MDBBtn
+              tag="a"
+              color="none"
+              className="m-1"
+              style={{ color: "#1266f1" }}
+            >
+              <MDBIcon fab icon="twitter" size="sm" />
+            </MDBBtn>
+
+            <MDBBtn
+              tag="a"
+              color="none"
+              className="m-1"
+              style={{ color: "#1266f1" }}
+            >
+              <MDBIcon fab icon="google" size="sm" />
+            </MDBBtn>
+
+            <MDBBtn
+              tag="a"
+              color="none"
+              className="m-1"
+              style={{ color: "#1266f1" }}
+            >
+              <MDBIcon fab icon="github" size="sm" />
+            </MDBBtn>
+          </div>
+        </div>
+      </MDBContainer>
     </div>
   );
 }

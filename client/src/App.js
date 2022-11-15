@@ -1,4 +1,4 @@
-import React, {  Route,  Link, Routes} from "react-router-dom";
+import React,{  Route,  Link, Routes} from "react-router-dom";
 import LogIn from "./Components/LogIn";
 import Home from "./Components/Home";
 import NavBar from './Components/Nav';
@@ -10,7 +10,6 @@ import Genre from './Components/GenreGallery';
 import ViewMore from "./Components/ViewMore";
 import AboutUs from "./Components/AboutUs";
 import './App.css'
-
 
 export default function App() {
 
