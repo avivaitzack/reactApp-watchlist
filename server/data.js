@@ -42,6 +42,20 @@ const user = await findByEmail(Email)
   }
 })
 
+app.post('/createFav', async (req, res) => {
+  const userId = req.body.userId;
+  const showId = req.body.showId;
+  await createFavorite(userId, showId)
+  try {
+    if(await createFavorite(userId, showId)) {
+      res.send(['Success'])
+    } 
+  }catch {
+    res.status(500).send()
+  }
+  })
+
+
 app.listen(port, () => console.log(`app listening on port ${port}!`));
 
 
@@ -72,4 +86,15 @@ export async function createUser(Name, Email, Password) {
   );
   const id = result.insertId;
   return getUser(id);
+}
+
+export async function createFavorite(userid, showid, ) {
+  const [result] = await pool.query(
+    `
+      INSERT INTO favorites (userid, showId)
+      VALUES (?, ?)
+      `,
+    [userid, showid]
+  );
+  return true;
 }

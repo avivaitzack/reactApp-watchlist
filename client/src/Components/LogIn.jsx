@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { findUser } from "../serverApi";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   MDBContainer,
@@ -11,24 +13,28 @@ import {
 export default function LogIn() {
   const [EmailInputValue, setEmailInputValue] = useState("");
   const [PasswordInputValue, setPasswordInputValue] = useState("");
-  const [Respones, setRespones] = useState([""]);
+  const [Respones, setRespones] = useState([]);
+  const navigate = useNavigate();
 
-  const login = () => {
-    axios.post("http://localhost:3001/login" , {
-        email: EmailInputValue,
-        password: PasswordInputValue,
-      })
-      .then((res) => {
-        setRespones(res.data[0]);
-        console.log(Respones);
-      });
-    if (Respones === "Success") {
-    } else if (Respones === "Not Allowed") {
-      alert("password wrong");
-    } else {
-      alert("something went wrong :(");
-    }
-  };
+
+  
+   const  login = async () => {
+      let result = await findUser(EmailInputValue,PasswordInputValue);
+      setRespones(result.data)
+      console.log(Respones);
+      if (Respones[0] === "Success") {
+        navigate("/")
+      } else if (Respones === "Not Allowed") {
+        alert("password wrong");
+      } else {
+        alert("something went wrong :(");
+      }
+    };
+
+  
+ 
+  
+ 
 
   return (
     <div style={{ margin: "130px", width: "100vh" }}>

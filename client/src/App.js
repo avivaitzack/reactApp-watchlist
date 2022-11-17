@@ -1,4 +1,5 @@
-import React,{  Route,  Link, Routes} from "react-router-dom";
+import React,{ createContext } from "react";
+import {  Route,  Link, Routes} from "react-router-dom";
 import LogIn from "./Components/LogIn";
 import Home from "./Components/Home";
 import NavBar from './Components/Nav';
@@ -11,10 +12,13 @@ import ViewMore from "./Components/ViewMore";
 import AboutUs from "./Components/AboutUs";
 import './App.css'
 
+const userContext = createContext('light');
+
 export default function App() {
 
   return (  
   <>
+  <userContext.Provider value="dark">
     <NavBar/>
   <div className="flexCenter" > 
       <Link to={'/'}> </Link>
@@ -40,6 +44,7 @@ export default function App() {
       </Routes>
       </div>
       <Footer/>
+      </userContext.Provider>
     </>
   );
 }

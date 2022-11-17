@@ -1,5 +1,6 @@
 import React, { useEffect, useState  } from "react";
 import  { useNavigate  } from "react-router-dom";
+import { getData } from "../ClientApi";
 import axios from "axios";
 import Carousel from "react-bootstrap/Carousel";
 import Button from 'react-bootstrap/Button';
@@ -8,10 +9,12 @@ export default function Slider(prpos) {
   const [shows, setShows] = useState([]);
   const navigate = useNavigate()
   useEffect(() => {
-    axios.get(`https://api.tvmaze.com/shows`).then((res) => {
-      const data = res.data.filter((show) => show.genres.includes(`${prpos.genre}`));
+    const getshowsData = async () =>{
+      const result = await getData();
+      const data = result.data.filter((show) => show.genres.includes(`${prpos.genre}`));
       setShows(data);
-    });
+    }
+    getshowsData();
   });
 
   

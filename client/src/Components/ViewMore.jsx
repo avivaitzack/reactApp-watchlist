@@ -16,6 +16,7 @@ export default function ViewMore() {
   let { showname } = useParams();
   const [show, setshow] = useState([]);
   const [showSum, setshowSum] = useState();
+  const [Respones, setRespones] = useState([""]);
 
   useEffect(() => {
     axios.get(
@@ -26,6 +27,25 @@ export default function ViewMore() {
         setshowSum(data.summary);
       });
   }, [showname]);
+
+  useEffect(() => {
+    const createFav = () => {
+      axios.post("http://localhost:3001/ccreateFav" , {
+          // userId: ,
+          showId: show.id,
+        })
+        .then((res) => {
+          setRespones(res.data[0]);
+          console.log(Respones);
+        });
+      if (Respones === "Success") {
+        alert("favorite created")
+      } else {
+        alert("something went wrong :(");
+      }
+    };
+  }, [showname, show, Respones])
+  
 
   console.log(show);
 
