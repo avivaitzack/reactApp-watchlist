@@ -1,5 +1,6 @@
-import React,{ createContext } from "react";
+import React,{ useState,useMemo  } from "react";
 import {  Route,  Link, Routes} from "react-router-dom";
+import { UserContext } from "./UserContext";
 import LogIn from "./Components/LogIn";
 import Home from "./Components/Home";
 import NavBar from './Components/Nav';
@@ -10,15 +11,15 @@ import Gallery from "./Components/Gallery";
 import Genre from './Components/GenreGallery';
 import ViewMore from "./Components/ViewMore";
 import AboutUs from "./Components/AboutUs";
+import SearchResults from './Components/SearchResults'
 import './App.css'
 
-const userContext = createContext('light');
 
 export default function App() {
-
+  const [user, setUser] = useState(null);
   return (  
   <>
-  <userContext.Provider value="dark">
+  
     <NavBar/>
   <div className="flexCenter" > 
       <Link to={'/'}> </Link>
@@ -30,6 +31,8 @@ export default function App() {
       <Link to={'/genre'}>  </Link>
       <Link to={'/viewmore'}>  </Link>
       <Link to={'/aboutUs'}>  </Link>
+      <Link to={'/serach'}>  </Link>
+      <UserContext.Provider value={user}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LogIn />} />
@@ -41,10 +44,12 @@ export default function App() {
         <Route path="/navbar" element={<NavBar />} />
         <Route path="/viewmore/:showname" element={<ViewMore />} />
         <Route path='/aboutUs' element={<AboutUs />} />
+        <Route path='/search/:searched' element={<SearchResults />} />
       </Routes>
+      </UserContext.Provider>
       </div>
       <Footer/>
-      </userContext.Provider>
+      
     </>
   );
 }

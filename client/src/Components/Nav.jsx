@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
   MDBContainer,
   MDBNavbar,
@@ -18,6 +19,15 @@ import {
 
 export default function Nav() {
   const [showBasic, setShowBasic] = useState(false);
+  const [showName, setshowName] = useState();
+  const navigate = useNavigate();
+
+  const handleChange = event => {
+    event.preventDefault();
+
+    navigate(`/search/${showName}`);
+  };
+  
 
   return (
     <MDBNavbar expand='lg' dark bgColor='dark'>
@@ -65,8 +75,8 @@ export default function Nav() {
           </MDBNavbarNav>
 
           <form className='d-flex input-group w-auto'>
-            <input type='search' className='form-control' placeholder='Type query' aria-label='Search' />
-            <MDBBtn color='primary'>Search</MDBBtn>
+            <input onChange={(event)=> setshowName(event.target.value)} type='search' className='form-control' placeholder='Type query' aria-label='Search' />
+            <MDBBtn onClick={handleChange} color='primary'>Search</MDBBtn>
           </form>
         </MDBCollapse>
       </MDBContainer>

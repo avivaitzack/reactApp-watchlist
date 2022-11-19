@@ -8,3 +8,12 @@ export async function getData() {
     return error;
   }
 }
+
+export async function getSearchedData(text) {
+  try {
+    const response = await axios.get(`https://api.tvmaze.com/search/shows?q=${text}`);
+    return response;
+  } catch (error) {
+    return error;
+  }
+}

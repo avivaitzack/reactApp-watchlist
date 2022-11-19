@@ -30,13 +30,12 @@ export default function ViewMore() {
 
   useEffect(() => {
     const createFav = () => {
-      axios.post("http://localhost:3001/ccreateFav" , {
+      axios.post("http://localhost:3001/createFav" , {
           // userId: ,
           showId: show.id,
         })
         .then((res) => {
           setRespones(res.data[0]);
-          console.log(Respones);
         });
       if (Respones === "Success") {
         alert("favorite created")

@@ -1,1 +1,1 @@
-SELECT * FROM favoriets
+SELECT * FROM favoriets;

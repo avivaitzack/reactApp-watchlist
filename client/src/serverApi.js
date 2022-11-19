@@ -12,15 +12,25 @@ export async function findUser(EmailInputValue, PasswordInputValue) {
   }
 }
 
+export async function getByShowName(showname) {
+  try {
+    const response = axios.get(
+      `https://api.tvmaze.com/singlesearch/shows?q=${showname}&embed=episodes`
+    );
+    return response;
+  } catch (error) {
+    return error;
+  }
+}
 
-
-    export async function getByShowName(showname) {
-      try {
-        const response = axios.get(
-          `https://api.tvmaze.com/singlesearch/shows?q=${showname}&embed=episodes`
-        )
-        return response;
-      } catch (error) {
-        return error;
-      }
-    }
+export async function createFav(userId,showId) {
+  try {
+    const response  =axios.post("http://localhost:3001/createFav" , {
+      userId:userId ,
+      showId:showId ,
+    })
+    return response;
+  } catch (error) {
+    return error;
+  }
+};
