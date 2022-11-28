@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext  } from "react";
+import { UserContext } from "../UserContext";
 import { findUser } from "../serverApi";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -15,7 +16,7 @@ export default function LogIn() {
   const [PasswordInputValue, setPasswordInputValue] = useState("");
   const [Respones, setRespones] = useState([]);
   const navigate = useNavigate();
-
+  const {user,  setUser } = useContext(UserContext);
 
   
    const  login = async () => {
@@ -23,6 +24,7 @@ export default function LogIn() {
       setRespones(result.data)
       console.log(Respones);
       if (Respones[0] === "Success") {
+        setUser([Respones[1]])
         navigate("/")
       } else if (Respones === "Not Allowed") {
         alert("password wrong");
@@ -30,7 +32,7 @@ export default function LogIn() {
         alert("something went wrong :(");
       }
     };
-
+ 
   
  
   

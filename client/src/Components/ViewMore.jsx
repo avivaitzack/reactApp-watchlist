@@ -70,7 +70,7 @@ export default function ViewMore() {
                 <MDBCardText
                   dangerouslySetInnerHTML={{ __html: showSum }}
                 ></MDBCardText>
-                <MDBBtn></MDBBtn>
+                <MDBBtn>ADD TO WATCHLIST</MDBBtn>
               </MDBCardBody>
             </MDBCol>
           </MDBRow>
