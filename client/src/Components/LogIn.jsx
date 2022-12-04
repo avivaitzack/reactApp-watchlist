@@ -13,7 +13,6 @@ export default function LogIn() {
   const [EmailInputValue, setEmailInputValue] = useState("");
   const [PasswordInputValue, setPasswordInputValue] = useState("");
   const [Respones, setRespones] = useState([]);
-  const [user, setUser] = useState();
   const navigate = useNavigate();
 
   
@@ -21,10 +20,8 @@ export default function LogIn() {
   const login = async () => {
     let result = await findUser(EmailInputValue, PasswordInputValue);
     setRespones(result.data);
-    console.log(Respones);
     if (Respones[0] === "Success") {
-      setUser([Respones[1]]);
-      localStorage.setItem('user', user)
+      localStorage.setItem('user', Respones[1])
       navigate("/");
     } else if (Respones === "Not Allowed") {
       alert("password wrong");
