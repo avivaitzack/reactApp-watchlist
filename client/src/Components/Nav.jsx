@@ -32,7 +32,7 @@ export default function Nav() {
   return (
     <MDBNavbar expand='lg' dark bgColor='dark'>
       <MDBContainer fluid>
-        <MDBNavbarBrand href='/aboutus'>Brand</MDBNavbarBrand>
+        <MDBNavbarBrand href='/aboutus'>WatchList</MDBNavbarBrand>
 
         <MDBNavbarToggler
           aria-controls='navbarSupportedContent'
@@ -75,7 +75,7 @@ export default function Nav() {
           </MDBNavbarNav>
 
           <form className='d-flex input-group w-auto'>
-            <input onChange={(event)=> setshowName(event.target.value)} type='search' className='form-control' placeholder='Type query' aria-label='Search' />
+            <input onChange={(event)=> setshowName(event.target.value)} type='search' className='form-control' placeholder='Search Show' aria-label='Search' />
             <MDBBtn onClick={handleChange} color='primary'>Search</MDBBtn>
           </form>
         </MDBCollapse>

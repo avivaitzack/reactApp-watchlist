@@ -1,8 +1,6 @@
-import React, { useState, useEffect,useContext  } from "react";
-import { UserContext } from "../UserContext";
+import React, { useState } from "react";
 import { findUser } from "../serverApi";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import {
   MDBContainer,
   MDBInput,
@@ -15,28 +13,25 @@ export default function LogIn() {
   const [EmailInputValue, setEmailInputValue] = useState("");
   const [PasswordInputValue, setPasswordInputValue] = useState("");
   const [Respones, setRespones] = useState([]);
+  const [user, setUser] = useState();
   const navigate = useNavigate();
-  const {user,  setUser } = useContext(UserContext);
 
   
-   const  login = async () => {
-      let result = await findUser(EmailInputValue,PasswordInputValue);
-      setRespones(result.data)
-      console.log(Respones);
-      if (Respones[0] === "Success") {
-        setUser([Respones[1]])
-        navigate("/")
-      } else if (Respones === "Not Allowed") {
-        alert("password wrong");
-      } else {
-        alert("something went wrong :(");
-      }
-    };
- 
-  
- 
-  
- 
+
+  const login = async () => {
+    let result = await findUser(EmailInputValue, PasswordInputValue);
+    setRespones(result.data);
+    console.log(Respones);
+    if (Respones[0] === "Success") {
+      setUser([Respones[1]]);
+      localStorage.setItem('user', user)
+      navigate("/");
+    } else if (Respones === "Not Allowed") {
+      alert("password wrong");
+    } else {
+      alert("something went wrong :(");
+    }
+  };
 
   return (
     <div style={{ margin: "130px", width: "100vh" }}>

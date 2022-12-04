@@ -1,6 +1,5 @@
-import React,{ useState,useMemo  } from "react";
+import React from "react";
 import {  Route,  Link, Routes} from "react-router-dom";
-import { UserContext } from "./UserContext";
 import LogIn from "./Components/LogIn";
 import Home from "./Components/Home";
 import NavBar from './Components/Nav';
@@ -16,7 +15,6 @@ import './App.css'
 
 
 export default function App() {
-  const [user, setUser] = useState(null);
   return (  
   <>
   
@@ -32,7 +30,7 @@ export default function App() {
       <Link to={'/viewmore'}>  </Link>
       <Link to={'/aboutUs'}>  </Link>
       <Link to={'/serach'}>  </Link>
-      <UserContext.Provider value={user}>
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LogIn />} />
@@ -46,7 +44,6 @@ export default function App() {
         <Route path='/aboutUs' element={<AboutUs />} />
         <Route path='/search/:searched' element={<SearchResults />} />
       </Routes>
-      </UserContext.Provider>
       </div>
       <Footer/>
       
