@@ -1,4 +1,4 @@
-# TV Watchlist App
+# Watchlist App
 Welcome to the TV Watchlist App, a simple and easy-to-use tool that helps you keep track of your favorite TV shows.
 
 ## Technology Stack
